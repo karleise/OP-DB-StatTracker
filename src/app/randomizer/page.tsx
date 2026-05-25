@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
+import { leaderImageSrc } from "@/lib/leader-image";
 
 type Pair = {
   leaderA: { id: string; name: string; imageUrl: string };
@@ -100,7 +101,7 @@ function LeaderSide({
   return (
     <div className={`flex flex-col items-center ${reverse ? "sm:items-end" : "sm:items-start"}`}>
       <div className="rounded-xl overflow-hidden border" style={{ borderColor: accent, boxShadow: `0 10px 50px ${accent}50` }}>
-        <Image src={leader.imageUrl} alt={leader.name} width={280} height={392} unoptimized />
+        <Image src={leaderImageSrc(leader)} alt={leader.name} width={280} height={392} unoptimized />
       </div>
       <div className="mt-3 heading-display text-2xl text-center">{leader.name}</div>
       <div className="text-xs font-mono text-muted">{leader.id}</div>

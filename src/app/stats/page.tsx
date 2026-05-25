@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { auth } from "@/lib/auth";
 import { getGlobalStats, getPersonalStats } from "@/lib/stats";
+import { leaderImageSrc } from "@/lib/leader-image";
 
 type SearchParams = Promise<{ tab?: string }>;
 
@@ -53,7 +54,7 @@ async function MineTab({ userId }: { userId: string }) {
 
       {s.favoriteDeck && (
         <div className="rounded-xl border bg-surface p-4 mb-6 flex items-center gap-4">
-          <Image src={s.favoriteDeck.imageUrl} alt={s.favoriteDeck.name} width={80} height={112} className="rounded-md" unoptimized />
+          <Image src={leaderImageSrc(s.favoriteDeck)} alt={s.favoriteDeck.name} width={80} height={112} className="rounded-md" unoptimized />
           <div>
             <div className="text-xs uppercase tracking-wide text-muted">Mazo favorito</div>
             <div className="heading-display text-2xl">{s.favoriteDeck.name}</div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { COLOR_HEX } from "@/lib/utils";
+import { leaderImageSrc } from "@/lib/leader-image";
 
 type Props = {
   leader: {
@@ -31,12 +32,14 @@ export default function LeaderCard({ leader, size = "md", href, caption }: Props
     >
       <div className="relative" style={{ width: dims.w, height: dims.h }}>
         <Image
-          src={leader.imageUrl}
+          src={leaderImageSrc(leader)}
           alt={leader.name}
           width={dims.w}
           height={dims.h}
           className="object-cover w-full h-full"
           unoptimized
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <div className="p-2 text-xs uppercase tracking-wide font-bold flex items-center justify-between">

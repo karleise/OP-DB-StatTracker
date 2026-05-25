@@ -1,0 +1,1566 @@
+[
+  {
+    "id": "EB01-001",
+    "name": "Kouzuki Oden",
+    "colors": [
+      "Red",
+      "Green"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Land of Wano/Kouzuki Clan",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/EB01-001_p2.png?260518"
+  },
+  {
+    "id": "EB01-021",
+    "name": "Hannyabal",
+    "colors": [
+      "Blue",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Impel Down",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/EB01-021_p2.png?260518"
+  },
+  {
+    "id": "EB01-040",
+    "name": "Kyros",
+    "colors": [
+      "Black",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Dressrosa",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/EB01-040_p2.png?260518"
+  },
+  {
+    "id": "EB02-010",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Green",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/EB02-010_p3.png?260518"
+  },
+  {
+    "id": "EB03-001",
+    "name": "Nefeltari Vivi",
+    "colors": [
+      "Red",
+      "Blue"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Alabasta",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/EB03-001_p1.png?260518"
+  },
+  {
+    "id": "EB04-001",
+    "name": "Jewelry Bonney",
+    "colors": [
+      "Red",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Egghead/Bonney Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/EB04-001_p1.png?260518"
+  },
+  {
+    "id": "OP01-001",
+    "name": "Roronoa Zoro",
+    "colors": [
+      "Red"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Supernovas/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-001_p2.png?260518"
+  },
+  {
+    "id": "OP01-002",
+    "name": "Trafalgar Law",
+    "colors": [
+      "Red",
+      "Green"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Supernovas/Heart Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-002_p1.png?260518"
+  },
+  {
+    "id": "OP01-003",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Red",
+      "Green"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Supernovas/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-003_p1.png?260518"
+  },
+  {
+    "id": "OP01-031",
+    "name": "Kouzuki Oden",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Land of Wano/Kouzuki Clan",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-031_p1.png?260518"
+  },
+  {
+    "id": "OP01-060",
+    "name": "Donquixote Doflamingo",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Donquixote Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-060_p2.png?260518"
+  },
+  {
+    "id": "OP01-061",
+    "name": "Kaido",
+    "colors": [
+      "Blue",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "The Four Emperors/Animal Kingdom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-061_p1.png?260518"
+  },
+  {
+    "id": "OP01-062",
+    "name": "Crocodile",
+    "colors": [
+      "Blue",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Baroque Works",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-062_p1.png?260518"
+  },
+  {
+    "id": "OP01-091",
+    "name": "King",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Animal Kingdom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-091_p1.png?260518"
+  },
+  {
+    "id": "OP02-001",
+    "name": "Edward.Newgate",
+    "colors": [
+      "Red"
+    ],
+    "life": 6,
+    "power": 6000,
+    "attribute": "Special",
+    "tribe": "The Four Emperors/Whitebeard Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP02-001_p2.png?260518"
+  },
+  {
+    "id": "OP02-002",
+    "name": "Monkey.D.Garp",
+    "colors": [
+      "Red",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Navy",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP02-002_p1.png?260518"
+  },
+  {
+    "id": "OP02-025",
+    "name": "Kin'emon",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Land of Wano/The Akazaya Nine",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP02-025_p1.png?260518"
+  },
+  {
+    "id": "OP02-026",
+    "name": "Sanji",
+    "colors": [
+      "Green",
+      "Blue"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP02-026_p1.png?260518"
+  },
+  {
+    "id": "OP02-049",
+    "name": "Emporio.Ivankov",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Impel Down/Revolutionary Army",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP02-049_p1.png?260518"
+  },
+  {
+    "id": "OP02-071",
+    "name": "Magellan",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Impel Down",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP02-071_p1.png?260518"
+  },
+  {
+    "id": "OP02-072",
+    "name": "Zephyr",
+    "colors": [
+      "Purple",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "FILM/Neo Navy",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP02-072_p1.png?260518"
+  },
+  {
+    "id": "OP02-093",
+    "name": "Smoker",
+    "colors": [
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Navy",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP02-093_p2.png?260518"
+  },
+  {
+    "id": "OP03-001",
+    "name": "Portgas.D.Ace",
+    "colors": [
+      "Red"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Whitebeard Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP03-001_p2.png?260518"
+  },
+  {
+    "id": "OP03-021",
+    "name": "Kuro",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "East Blue/Black Cat Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP03-021_p1.png?260518"
+  },
+  {
+    "id": "OP03-022",
+    "name": "Arlong",
+    "colors": [
+      "Green",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Fish-Man/East Blue/Arlong Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP03-022_p1.png?260518"
+  },
+  {
+    "id": "OP03-040",
+    "name": "Nami",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Wisdom",
+    "tribe": "East Blue",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP03-040_p1.png?260518"
+  },
+  {
+    "id": "OP03-058",
+    "name": "Iceburg",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Wisdom",
+    "tribe": "Water Seven/Galley-La Company",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP03-058_p1.png?260518"
+  },
+  {
+    "id": "OP03-076",
+    "name": "Rob Lucci",
+    "colors": [
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "CP9",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP03-076_p1.png?260518"
+  },
+  {
+    "id": "OP03-077",
+    "name": "Charlotte Linlin",
+    "colors": [
+      "Black",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Four Emperors/Big Mom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP03-077_p1.png?260518"
+  },
+  {
+    "id": "OP03-099",
+    "name": "Charlotte Katakuri",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Big Mom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP03-099_p2.png?260518"
+  },
+  {
+    "id": "OP04-001",
+    "name": "Nefeltari Vivi",
+    "colors": [
+      "Red",
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Alabasta",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-001_p1.png?260518"
+  },
+  {
+    "id": "OP04-019",
+    "name": "Donquixote Doflamingo",
+    "colors": [
+      "Green",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Donquixote Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-019_p1.png?260518"
+  },
+  {
+    "id": "OP04-020",
+    "name": "Issho",
+    "colors": [
+      "Green",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Navy",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-020_p1.png?260518"
+  },
+  {
+    "id": "OP04-039",
+    "name": "Rebecca",
+    "colors": [
+      "Blue",
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Dressrosa",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-039_p1.png?260518"
+  },
+  {
+    "id": "OP04-040",
+    "name": "Queen",
+    "colors": [
+      "Blue",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Ranged",
+    "tribe": "Animal Kingdom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-040_p1.png?260518"
+  },
+  {
+    "id": "OP04-058",
+    "name": "Crocodile",
+    "colors": [
+      "Purple",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Baroque Works",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-058_p1.png?260518"
+  },
+  {
+    "id": "OP05-001",
+    "name": "Sabo",
+    "colors": [
+      "Red",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Revolutionary Army",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP05-001_p2.png?260518"
+  },
+  {
+    "id": "OP05-002",
+    "name": "Belo Betty",
+    "colors": [
+      "Red",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Revolutionary Army",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP05-002_p2.png?260518"
+  },
+  {
+    "id": "OP05-022",
+    "name": "Donquixote Rosinante",
+    "colors": [
+      "Green",
+      "Blue"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Navy/Donquixote Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP05-022_p2.png?260518"
+  },
+  {
+    "id": "OP05-041",
+    "name": "Sakazuki",
+    "colors": [
+      "Blue",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Navy",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP05-041_p1.png?260518"
+  },
+  {
+    "id": "OP05-060",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP05-060_p4.png?260518"
+  },
+  {
+    "id": "OP05-098",
+    "name": "Enel",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Sky Island",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP05-098_p2.png?260518"
+  },
+  {
+    "id": "OP06-001",
+    "name": "Uta",
+    "colors": [
+      "Red",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "FILM",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-001_p2.png?260518"
+  },
+  {
+    "id": "OP06-020",
+    "name": "Hody Jones",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Fish-Man/New Fish-Man Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-020_p2.png?260518"
+  },
+  {
+    "id": "OP06-021",
+    "name": "Perona",
+    "colors": [
+      "Green",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Thriller Bark Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-021_p2.png?260518"
+  },
+  {
+    "id": "OP06-022",
+    "name": "Yamato",
+    "colors": [
+      "Green",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Land of Wano",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-022_p3.png?260518"
+  },
+  {
+    "id": "OP06-042",
+    "name": "Vinsmoke Reiju",
+    "colors": [
+      "Blue",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Vinsmoke Family/GERMA 66",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-042_p2.png?260518"
+  },
+  {
+    "id": "OP06-080",
+    "name": "Gecko Moria",
+    "colors": [
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Thriller Bark Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-080_p2.png?260518"
+  },
+  {
+    "id": "OP07-001",
+    "name": "Monkey.D.Dragon",
+    "colors": [
+      "Red"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Revolutionary Army",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP07-001_p2.png?260518"
+  },
+  {
+    "id": "OP07-019",
+    "name": "Jewelry Bonney",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Supernovas/Bonney Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP07-019_p3.png?260518"
+  },
+  {
+    "id": "OP07-038",
+    "name": "Boa Hancock",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Kuja Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP07-038_p2.png?260518"
+  },
+  {
+    "id": "OP07-059",
+    "name": "Foxy",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Foxy Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP07-059_p2.png?260518"
+  },
+  {
+    "id": "OP07-079",
+    "name": "Rob Lucci",
+    "colors": [
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "CP0",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP07-079_p2.png?260518"
+  },
+  {
+    "id": "OP07-097",
+    "name": "Vegapunk",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 2,
+    "power": 5000,
+    "attribute": "Wisdom",
+    "tribe": "Scientist/Egghead",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP07-097_p2.png?260518"
+  },
+  {
+    "id": "OP08-001",
+    "name": "Tony Tony.Chopper",
+    "colors": [
+      "Red",
+      "Green"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Animal/Drum Kingdom/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP08-001_p2.png?260518"
+  },
+  {
+    "id": "OP08-002",
+    "name": "Marco",
+    "colors": [
+      "Red",
+      "Blue"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Whitebeard Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP08-002_p2.png?260518"
+  },
+  {
+    "id": "OP08-021",
+    "name": "Carrot",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Minks",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP08-021_p2.png?260518"
+  },
+  {
+    "id": "OP08-057",
+    "name": "King",
+    "colors": [
+      "Purple",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Animal Kingdom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP08-057_p2.png?260518"
+  },
+  {
+    "id": "OP08-058",
+    "name": "Charlotte Pudding",
+    "colors": [
+      "Purple",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Wisdom",
+    "tribe": "Big Mom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP08-058_p2.png?260518"
+  },
+  {
+    "id": "OP08-098",
+    "name": "Kalgara",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Jaya/Sky Island/Shandian Warrior",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP08-098_p2.png?260518"
+  },
+  {
+    "id": "OP09-001",
+    "name": "Shanks",
+    "colors": [
+      "Red"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "The Four Emperors/Red-Haired Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP09-001_p2.png?260518"
+  },
+  {
+    "id": "OP09-022",
+    "name": "Lim",
+    "colors": [
+      "Green",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Wisdom",
+    "tribe": "ODYSSEY",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP09-022_p1.png?260518"
+  },
+  {
+    "id": "OP09-042",
+    "name": "Buggy",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "The Four Emperors/Cross Guild",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP09-042_p2.png?260518"
+  },
+  {
+    "id": "OP09-061",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Purple",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "The Four Emperors/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP09-061_p2.png?260518"
+  },
+  {
+    "id": "OP09-062",
+    "name": "Nico Robin",
+    "colors": [
+      "Purple",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP09-062_p1.png?260518"
+  },
+  {
+    "id": "OP09-081",
+    "name": "Marshall.D.Teach",
+    "colors": [
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Four Emperors/Blackbeard Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP09-081_p2.png?260518"
+  },
+  {
+    "id": "OP10-001",
+    "name": "Smoker",
+    "colors": [
+      "Red",
+      "Green"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Punk Hazard/Navy",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP10-001_p1.png?260518"
+  },
+  {
+    "id": "OP10-002",
+    "name": "Caesar Clown",
+    "colors": [
+      "Red",
+      "Blue"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Scientist/Punk Hazard",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP10-002_p1.png?260518"
+  },
+  {
+    "id": "OP10-003",
+    "name": "Sugar",
+    "colors": [
+      "Red",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Donquixote Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP10-003_p1.png?260518"
+  },
+  {
+    "id": "OP10-022",
+    "name": "Trafalgar Law",
+    "colors": [
+      "Green",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Dressrosa/Supernovas/Heart Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP10-022_p1.png?260518"
+  },
+  {
+    "id": "OP10-042",
+    "name": "Usopp",
+    "colors": [
+      "Blue",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Ranged",
+    "tribe": "Dressrosa/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP10-042_p2.png?260518"
+  },
+  {
+    "id": "OP10-099",
+    "name": "Eustass\"Captain\"Kid",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Supernovas/Kid Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP10-099_p1.png?260518"
+  },
+  {
+    "id": "OP11-001",
+    "name": "Koby",
+    "colors": [
+      "Red",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Navy/SWORD",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-001_p1.png?260518"
+  },
+  {
+    "id": "OP11-021",
+    "name": "Jinbe",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Fish-Man/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-021_p1.png?260518"
+  },
+  {
+    "id": "OP11-022",
+    "name": "Shirahoshi",
+    "colors": [
+      "Green",
+      "Yellow"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Wisdom",
+    "tribe": "Merfolk/Fish-Man Island",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-022_p1.png?260518"
+  },
+  {
+    "id": "OP11-040",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Blue",
+      "Purple"
+    ],
+    "life": 3,
+    "power": 6000,
+    "attribute": "Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-040_p1.png?260518"
+  },
+  {
+    "id": "OP11-041",
+    "name": "Nami",
+    "colors": [
+      "Blue",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-041_p2.png?260518"
+  },
+  {
+    "id": "OP11-062",
+    "name": "Charlotte Katakuri",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Big Mom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-062_p1.png?260518"
+  },
+  {
+    "id": "OP12-001",
+    "name": "Silvers Rayleigh",
+    "colors": [
+      "Red"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Former Roger Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP12-001_p1.png?260518"
+  },
+  {
+    "id": "OP12-020",
+    "name": "Roronoa Zoro",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Supernovas/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP12-020_p4.png?260518"
+  },
+  {
+    "id": "OP12-040",
+    "name": "Kuzan",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Navy",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP12-040_p1.png?260518"
+  },
+  {
+    "id": "OP12-041",
+    "name": "Sanji",
+    "colors": [
+      "Blue",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "The Vinsmoke Family/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP12-041_p1.png?260518"
+  },
+  {
+    "id": "OP12-061",
+    "name": "Donquixote Rosinante",
+    "colors": [
+      "Purple",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Navy/Donquixote Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP12-061_p1.png?260518"
+  },
+  {
+    "id": "OP12-081",
+    "name": "Koala",
+    "colors": [
+      "Black",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Dressrosa/Revolutionary Army",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP12-081_p1.png?260518"
+  },
+  {
+    "id": "OP13-001",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Red",
+      "Green"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Supernovas/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP13-001_p1.png?260518"
+  },
+  {
+    "id": "OP13-002",
+    "name": "Portgas.D.Ace",
+    "colors": [
+      "Red",
+      "Blue"
+    ],
+    "life": 3,
+    "power": 6000,
+    "attribute": "Special",
+    "tribe": "Whitebeard Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP13-002_p1.png?260518"
+  },
+  {
+    "id": "OP13-003",
+    "name": "Gol.D.Roger",
+    "colors": [
+      "Red",
+      "Purple"
+    ],
+    "life": 5,
+    "power": 7000,
+    "attribute": "Slash",
+    "tribe": "King of the Pirates/Roger Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP13-003_p1.png?260518"
+  },
+  {
+    "id": "OP13-004",
+    "name": "Sabo",
+    "colors": [
+      "Red",
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Dressrosa/Revolutionary Army",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP13-004_p1.png?260518"
+  },
+  {
+    "id": "OP13-079",
+    "name": "Imu",
+    "colors": [
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "?",
+    "tribe": "?",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP13-079_p1.png?260518"
+  },
+  {
+    "id": "OP13-100",
+    "name": "Jewelry Bonney",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Egghead/Bonney Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP13-100_p1.png?260518"
+  },
+  {
+    "id": "OP14-001",
+    "name": "Trafalgar Law",
+    "colors": [
+      "Red"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "The Seven Warlords of the Sea/Supernovas/Heart Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-001_p1.png?260518"
+  },
+  {
+    "id": "OP14-020",
+    "name": "Dracule Mihawk",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "The Seven Warlords of the Sea",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-020_p1.png?260518"
+  },
+  {
+    "id": "OP14-040",
+    "name": "Jinbe",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Fish-Man/The Seven Warlords of the Sea/The Sun Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-040_p1.png?260518"
+  },
+  {
+    "id": "OP14-041",
+    "name": "Boa Hancock",
+    "colors": [
+      "Blue",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Kuja Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-041_p1.png?260518"
+  },
+  {
+    "id": "OP14-060",
+    "name": "Donquixote Doflamingo",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Donquixote Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-060_p1.png?260518"
+  },
+  {
+    "id": "OP14-079",
+    "name": "Crocodile",
+    "colors": [
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Baroque Works",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-079_p1.png?260518"
+  },
+  {
+    "id": "OP14-080",
+    "name": "Gecko Moria",
+    "colors": [
+      "Black",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Thriller Bark Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-080_p1.png?260518"
+  },
+  {
+    "id": "OP15-001",
+    "name": "Krieg",
+    "colors": [
+      "Red",
+      "Green"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "East Blue/Krieg Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-001_p1.png?260518"
+  },
+  {
+    "id": "OP15-002",
+    "name": "Lucy",
+    "colors": [
+      "Red",
+      "Blue"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Dressrosa/Revolutionary Army",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-002_p1.png?260518"
+  },
+  {
+    "id": "OP15-022",
+    "name": "Brook",
+    "colors": [
+      "Green",
+      "Black"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-022_p1.png?260518"
+  },
+  {
+    "id": "OP15-039",
+    "name": "Rebecca",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Wisdom",
+    "tribe": "Dressrosa",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-039_p1.png?260518"
+  },
+  {
+    "id": "OP15-058",
+    "name": "Enel",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Sky Island",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-058_p1.png?260518"
+  },
+  {
+    "id": "OP15-098",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Sky Island/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-098_p1.png?260518"
+  },
+  {
+    "id": "PRB01-001",
+    "name": "Sanji",
+    "colors": [
+      "Red"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/PRB01-001_p1.png?260518"
+  },
+  {
+    "id": "ST01-001",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Red"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Supernovas/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-001.png?260518"
+  },
+  {
+    "id": "ST02-001",
+    "name": "Eustass\"Captain\"Kid",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Supernovas/Kid Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST02-001.png?260518"
+  },
+  {
+    "id": "ST03-001",
+    "name": "Crocodile",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Seven Warlords of the Sea/Baroque Works",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST03-001.png?260518"
+  },
+  {
+    "id": "ST04-001",
+    "name": "Kaido",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "The Four Emperors/Animal Kingdom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-001.png?260518"
+  },
+  {
+    "id": "ST05-001",
+    "name": "Shanks",
+    "colors": [
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "FILM/The Four Emperors/Red-Haired Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST05-001.png?260518"
+  },
+  {
+    "id": "ST06-001",
+    "name": "Sakazuki",
+    "colors": [
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Navy",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST06-001.png?260518"
+  },
+  {
+    "id": "ST07-001",
+    "name": "Charlotte Linlin",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Four Emperors/Big Mom Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST07-001.png?260518"
+  },
+  {
+    "id": "ST08-001",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST08-001.png?260518"
+  },
+  {
+    "id": "ST09-001",
+    "name": "Yamato",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Land of Wano",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST09-001.png?260518"
+  },
+  {
+    "id": "ST10-001",
+    "name": "Trafalgar Law",
+    "colors": [
+      "Red",
+      "Purple"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash",
+    "tribe": "Heart Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST10-001.png?260518"
+  },
+  {
+    "id": "ST10-002",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Red",
+      "Purple"
+    ],
+    "life": 3,
+    "power": 6000,
+    "attribute": "Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST10-002.png?260518"
+  },
+  {
+    "id": "ST10-003",
+    "name": "Eustass\"Captain\"Kid",
+    "colors": [
+      "Red",
+      "Purple"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Kid Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST10-003.png?260518"
+  },
+  {
+    "id": "ST11-001",
+    "name": "Uta",
+    "colors": [
+      "Green"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "FILM",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST11-001_p1.png?260518"
+  },
+  {
+    "id": "ST12-001",
+    "name": "Roronoa Zoro & Sanji",
+    "colors": [
+      "Green",
+      "Blue"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Slash/Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST12-001.png?260518"
+  },
+  {
+    "id": "ST13-001",
+    "name": "Sabo",
+    "colors": [
+      "Red",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Dressrosa/Revolutionary Army",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST13-001_p1.png?260518"
+  },
+  {
+    "id": "ST13-002",
+    "name": "Portgas.D.Ace",
+    "colors": [
+      "Blue",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "Whitebeard Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST13-002_p1.png?260518"
+  },
+  {
+    "id": "ST13-003",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Black",
+      "Yellow"
+    ],
+    "life": 4,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Supernovas/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST13-003_p2.png?260518"
+  },
+  {
+    "id": "ST14-001",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Black"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST14-001.png?260518"
+  },
+  {
+    "id": "ST21-001",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Red"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "The Four Emperors/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST21-001_p2.png?260518"
+  },
+  {
+    "id": "ST22-001",
+    "name": "Ace & Newgate",
+    "colors": [
+      "Blue"
+    ],
+    "life": 5,
+    "power": 5000,
+    "attribute": "Special",
+    "tribe": "The Four Emperors/Whitebeard Pirates",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST22-001_p1.png?260518"
+  },
+  {
+    "id": "ST29-001",
+    "name": "Monkey.D.Luffy",
+    "colors": [
+      "Yellow"
+    ],
+    "life": 6,
+    "power": 5000,
+    "attribute": "Strike",
+    "tribe": "Egghead/The Four Emperors/Straw Hat Crew",
+    "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST29-001_p1.png?260518"
+  }
+]

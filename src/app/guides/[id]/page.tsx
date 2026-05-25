@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import { prisma } from "@/lib/prisma";
 import LeaderCard from "@/components/leaders/LeaderCard";
 import { COLOR_HEX } from "@/lib/utils";
+import { leaderImageSrc } from "@/lib/leader-image";
 
 type Ctx = { params: Promise<{ id: string }> };
 
@@ -33,7 +34,7 @@ export default async function GuideDetailPage({ params }: Ctx) {
       <header className="grid md:grid-cols-[320px_1fr] gap-6 mb-8">
         <div className="rounded-xl overflow-hidden border" style={{ borderColor: accent }}>
           <Image
-            src={guide.leader.imageUrl}
+            src={leaderImageSrc(guide.leader)}
             alt={guide.leader.name}
             width={320}
             height={448}
@@ -52,7 +53,7 @@ export default async function GuideDetailPage({ params }: Ctx) {
         </div>
       </header>
 
-      <section className="prose-invert max-w-none mb-12 text-foreground/90 leading-relaxed">
+      <section className="surface rounded-xl p-6 mb-12 leading-relaxed text-foreground/95 [&_h2]:heading-display [&_h2]:text-2xl [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:font-bold [&_h3]:text-lg [&_h3]:mt-3 [&_h3]:mb-1 [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-3 [&_strong]:font-bold [&_strong]:text-accent [&_a]:underline [&_a]:text-accent-blue">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{guide.body}</ReactMarkdown>
       </section>
 

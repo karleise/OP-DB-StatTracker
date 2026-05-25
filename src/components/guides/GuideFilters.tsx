@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 
 type Item = { id: number; name: string };
 
@@ -11,6 +11,8 @@ export default function GuideFilters({
   const router = useRouter();
   const params = useSearchParams();
   const [pending, start] = useTransition();
+  const [q, setQ] = useState(params.get("q") ?? "");
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   function setParam(key: string, value: string) {
     const next = new URLSearchParams(params.toString());
@@ -18,26 +20,35 @@ export default function GuideFilters({
     start(() => router.push(`/guides?${next.toString()}`));
   }
 
+  // Debounce query input
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    if (q === (params.get("q") ?? "")) return;
+    debounceRef.current = setTimeout(() => setParam("q", q), 350);
+    return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [q]);
+
   return (
-    <aside className="rounded-xl border bg-surface p-4 space-y-4 h-fit sticky top-16">
+    <aside className="rounded-xl border bg-surface p-4 space-y-4 h-fit sticky top-16 backdrop-blur-md">
       <div>
         <div className="heading-display text-sm text-accent mb-2">Buscar</div>
         <input
           className="input"
           placeholder="Título o leader..."
-          defaultValue={params.get("q") ?? ""}
-          onChange={(e) => setParam("q", e.target.value)}
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
         />
       </div>
 
-      <Select label="Color"      param="colorId"      items={colors}       value={params.get("colorId")} onChange={(v) => setParam("colorId", v)} />
-      <Select label="Dificultad" param="difficultyId" items={difficulties} value={params.get("difficultyId")} onChange={(v) => setParam("difficultyId", v)} />
-      <Select label="Estilo"     param="playStyleId"  items={playStyles}   value={params.get("playStyleId")} onChange={(v) => setParam("playStyleId", v)} />
+      <Select label="Color"      items={colors}       value={params.get("colorId")} onChange={(v) => setParam("colorId", v)} />
+      <Select label="Dificultad" items={difficulties} value={params.get("difficultyId")} onChange={(v) => setParam("difficultyId", v)} />
+      <Select label="Estilo"     items={playStyles}   value={params.get("playStyleId")} onChange={(v) => setParam("playStyleId", v)} />
 
       <button
         type="button"
         className="btn btn-ghost w-full"
-        onClick={() => start(() => router.push("/guides"))}
+        onClick={() => { setQ(""); start(() => router.push("/guides")); }}
       >
         Limpiar
       </button>
@@ -48,7 +59,7 @@ export default function GuideFilters({
 
 function Select({
   label, items, value, onChange,
-}: { label: string; param: string; items: Item[]; value: string | null; onChange: (v: string) => void }) {
+}: { label: string; items: Item[]; value: string | null; onChange: (v: string) => void }) {
   return (
     <div>
       <label className="label">{label}</label>
