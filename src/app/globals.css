@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0b0b;
+  --foreground: #f5f5f5;
+  --surface: #161616;
+  --surface-2: #1f1f1f;
+  --border: #2a2a2a;
+  --accent: #d83a3a;
+  --accent-yellow: #e6c43a;
+  --accent-blue: #3b6fd6;
+  --muted: #8a8a8a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-blue: var(--accent-blue);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+html, body { background: var(--background); color: var(--foreground); }
+
+body {
+  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 50% -100px, rgba(216,58,58,0.10), transparent 60%),
+    radial-gradient(900px 500px at 100% 100%, rgba(59,111,214,0.07), transparent 60%),
+    var(--background);
+}
+
+::-webkit-scrollbar       { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.heading-display { font-weight: 900; letter-spacing: 0.02em; text-transform: uppercase; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .55rem 1rem; border-radius: .5rem; font-weight: 600; line-height: 1;
+  transition: background .15s, transform .1s, border-color .15s;
+  border: 1px solid var(--border); background: var(--surface);
+}
+.btn:hover { background: var(--surface-2); }
+.btn-primary { background: var(--accent); border-color: transparent; color: white; }
+.btn-primary:hover { background: #c23131; }
+.btn-yellow { background: var(--accent-yellow); border-color: transparent; color: #111; }
+.btn-yellow:hover { background: #d3b32f; }
+.btn-ghost { background: transparent; border-color: var(--border); }
+
+.input, .select, .textarea {
+  width: 100%; background: var(--surface); border: 1px solid var(--border);
+  border-radius: .5rem; padding: .55rem .75rem; color: var(--foreground);
+}
+.input:focus, .select:focus, .textarea:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(216,58,58,.18);
+}
+
+.label { font-size: .85rem; font-weight: 600; color: #d9d9d9; margin-bottom: .25rem; display: block; }
+
+.tag { display:inline-flex; padding:.15rem .5rem; border-radius:9999px; font-size:.7rem; font-weight:700; }

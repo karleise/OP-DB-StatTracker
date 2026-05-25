@@ -1,0 +1,141 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum MatchupKind {
+  GOOD
+  BAD
+}
+
+enum Result {
+  WIN
+  LOSS
+}
+
+model User {
+  id              String   @id @default(cuid())
+  username        String   @unique
+  password        String
+  role            Role     @default(USER)
+  createdAt       DateTime @default(now())
+
+  matchesAsPlayer Match[]  @relation("PlayerMatches")
+  matchesAsRival  Match[]  @relation("RivalMatches")
+}
+
+model Leader {
+  id        String  @id
+  name      String
+  life      Int?
+  power     Int?
+  attribute String?
+  tribe     String?
+  imageUrl  String  @db.Text
+
+  colors          LeaderColor[]
+  guide           Guide?
+  matchupAppearances GuideMatchup[]
+  playerMatches   Match[] @relation("PlayerLeader")
+  rivalMatches    Match[] @relation("RivalLeader")
+}
+
+model Color {
+  id      Int           @id @default(autoincrement())
+  name    String        @unique
+  hex     String?
+
+  leaders LeaderColor[]
+  guides  Guide[]
+}
+
+model LeaderColor {
+  leaderId String
+  colorId  Int
+
+  leader Leader @relation(fields: [leaderId], references: [id], onDelete: Cascade)
+  color  Color  @relation(fields: [colorId],  references: [id], onDelete: Cascade)
+
+  @@id([leaderId, colorId])
+  @@index([colorId])
+}
+
+model Difficulty {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  order  Int     @default(0)
+  guides Guide[]
+}
+
+model PlayStyle {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  guides Guide[]
+}
+
+model Guide {
+  id           String   @id @default(cuid())
+  leaderId     String   @unique
+  title        String
+  body         String   @db.Text
+  colorId      Int
+  difficultyId Int
+  playStyleId  Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  leader     Leader        @relation(fields: [leaderId],     references: [id])
+  color      Color         @relation(fields: [colorId],      references: [id])
+  difficulty Difficulty    @relation(fields: [difficultyId], references: [id])
+  playStyle  PlayStyle     @relation(fields: [playStyleId],  references: [id])
+  matchups   GuideMatchup[]
+
+  @@index([colorId])
+  @@index([difficultyId])
+  @@index([playStyleId])
+}
+
+model GuideMatchup {
+  id       String      @id @default(cuid())
+  guideId  String
+  leaderId String
+  kind     MatchupKind
+
+  guide  Guide  @relation(fields: [guideId],  references: [id], onDelete: Cascade)
+  leader Leader @relation(fields: [leaderId], references: [id])
+
+  @@unique([guideId, leaderId, kind])
+  @@index([leaderId])
+}
+
+model Match {
+  id             String   @id @default(cuid())
+  playerId       String
+  playerLeaderId String
+  rivalId        String?
+  rivalName      String?
+  rivalLeaderId  String
+  result         Result
+  notes          String?  @db.Text
+  playedAt       DateTime @default(now())
+
+  player       User    @relation("PlayerMatches", fields: [playerId],       references: [id], onDelete: Cascade)
+  playerLeader Leader  @relation("PlayerLeader",  fields: [playerLeaderId], references: [id])
+  rival        User?   @relation("RivalMatches",  fields: [rivalId],        references: [id], onDelete: SetNull)
+  rivalLeader  Leader  @relation("RivalLeader",   fields: [rivalLeaderId],  references: [id])
+
+  @@index([playerId])
+  @@index([rivalId])
+  @@index([playerLeaderId])
+  @@index([rivalLeaderId])
+  @@index([playedAt])
+}
