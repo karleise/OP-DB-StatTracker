@@ -14,11 +14,10 @@ export type LoginInput = z.infer<typeof loginSchema>;
 
 export const guideSchema = z.object({
   leaderId: z.string().min(1),
-  title: z.string().min(1).max(200),
   body: z.string().min(1),
-  colorId: z.coerce.number().int().positive(),
+  colorIds: z.array(z.coerce.number().int().positive()).min(1).max(2),
   difficultyId: z.coerce.number().int().positive(),
-  playStyleId: z.coerce.number().int().positive(),
+  playStyleIds: z.array(z.coerce.number().int().positive()).min(1).max(4),
   goodMatchups: z.array(z.string()).max(3),
   badMatchups: z.array(z.string()).max(3),
 });
@@ -37,7 +36,7 @@ export const matchSchema = z.object({
   rivalName: z.string().optional().nullable(),
   rivalLeaderId: z.string().min(1),
   result: z.enum(["WIN", "LOSS"]),
-  notes: z.string().max(2000).optional().nullable(),
+  turnOrder: z.enum(["FIRST", "SECOND"]).optional().nullable(),
 });
 export type MatchInput = z.infer<typeof matchSchema>;
 

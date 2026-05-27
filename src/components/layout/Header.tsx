@@ -1,55 +1,38 @@
 import Link from "next/link";
+import Image from "next/image";
 import { auth, signOut } from "@/lib/auth";
+import { getCurrentGame, GAMES } from "@/lib/game";
+import HeaderNav from "./HeaderNav";
 
 export default async function Header() {
   const session = await auth();
-  const user = session?.user;
+  const user = session?.user
+    ? { username: session.user.username, role: session.user.role }
+    : null;
+  const game = await getCurrentGame();
+
+  async function signOutAction() {
+    "use server";
+    await signOut({ redirectTo: "/" });
+  }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[color:var(--border)] bg-[color:var(--background)]/85 backdrop-blur">
-      <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 heading-display text-xl">
-          <span className="inline-block w-2 h-6 bg-[color:var(--accent)]" />
-          OP-DB-StatTracker
+    <header className="sticky top-0 z-40 border-b border-border bg-[rgba(255,251,240,0.78)] backdrop-blur-md shadow-[0_2px_18px_rgba(40,28,18,0.08)]">
+      <div className="relative w-full px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 heading-display text-base sm:text-xl">
+          <Image
+            src="/logo.webp"
+            alt="StatTracker"
+            width={32}
+            height={32}
+            priority
+            className="w-7 h-7 sm:w-8 sm:h-8 rounded"
+          />
+          <span className="text-foreground">StatTracker</span>
         </Link>
-        <nav className="flex items-center gap-1 text-sm">
-          <NavLink href="/guides">Guías</NavLink>
-          <NavLink href="/randomizer">Randomizer</NavLink>
-          <NavLink href="/stats">Stats</NavLink>
-          {user?.role === "ADMIN" && <NavLink href="/admin">Admin</NavLink>}
-          {user ? (
-            <>
-              <span className="px-3 py-1 text-[color:var(--muted)] hidden sm:inline">
-                @{user.username}
-              </span>
-              <form
-                action={async () => {
-                  "use server";
-                  await signOut({ redirectTo: "/" });
-                }}
-              >
-                <button type="submit" className="btn btn-ghost text-sm">Salir</button>
-              </form>
-            </>
-          ) : (
-            <>
-              <Link href="/login"    className="btn btn-ghost text-sm">Login</Link>
-              <Link href="/register" className="btn btn-primary text-sm">Sign up</Link>
-            </>
-          )}
-        </nav>
+        <HeaderNav user={user} game={game} games={GAMES} signOutAction={signOutAction} />
       </div>
+      <div className="h-[3px] bg-accent transition-colors duration-200" aria-hidden />
     </header>
-  );
-}
-
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="px-3 py-2 rounded-md font-semibold uppercase tracking-wide text-[color:var(--foreground)] hover:text-[color:var(--accent)] hover:bg-[color:var(--surface)] transition"
-    >
-      {children}
-    </Link>
   );
 }

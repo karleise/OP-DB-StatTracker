@@ -4,7 +4,7 @@ import { Suspense, useState, FormEvent } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { toast } from "sonner";
+import { notifySuccess, notifyError } from "@/lib/notify";
 
 export default function LoginPage() {
   return (
@@ -30,8 +30,8 @@ function LoginInner() {
       redirect: false,
     });
     setLoading(false);
-    if (res?.error) toast.error("Usuario o contraseña inválidos");
-    else { toast.success("Sesión iniciada"); router.push(callbackUrl); router.refresh(); }
+    if (res?.error) notifyError("Usuario o contraseña inválidos");
+    else { notifySuccess("Sesión iniciada"); router.push(callbackUrl); router.refresh(); }
   }
 
   return (

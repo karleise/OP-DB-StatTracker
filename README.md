@@ -75,7 +75,7 @@ Abre [http://localhost:3000](http://localhost:3000).
 
 ## Cuentas
 
-- **Admin**: `admin` / `admin` (sembrado por `db:seed`).
+- **Admin**: configurable vía `ADMIN_USERNAME` y `ADMIN_PASSWORD` en tu `.env`. Ejecuta `npm run db:seed` para crearlo. **No hay defaults — el seed falla si esas vars no están definidas, por diseño.**
 - Cualquier otro jugador puede crearse su cuenta en `/register`.
 
 Solo el admin puede:
@@ -181,7 +181,7 @@ Cada cambio grande va en su rama y se mergea a `main` por PR.
 ## Verificación end-to-end
 
 1. `localhost:3000` carga la landing.
-2. `/login` con `admin/admin` → sesión activa, accede a `/admin/*`.
+2. `/login` con las credenciales definidas en tu `.env` → sesión activa, accede a `/admin/*`.
 3. `/admin/catalogs/colors` muestra los 6 colores sembrados.
 4. `/admin/guides/new` → crea una guía con 3 good + 3 bad matchups.
 5. Logout → `/guides` muestra la guía públicamente con los filtros.

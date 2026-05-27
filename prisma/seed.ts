@@ -31,7 +31,29 @@ const DIFFICULTY_DEFAULTS = [
   { name: "Hard",   order: 3 },
 ];
 
-const PLAYSTYLE_DEFAULTS = ["Aggro", "Midrange", "Control", "Combo", "Rush", "Tempo"];
+const PLAYSTYLE_DEFAULTS = [
+  "Aggro",
+  "Beatdown",
+  "Board Control",
+  "Board Flood",
+  "Board Spam",
+  "Card Cycling",
+  "Control",
+  "Critical Hit",
+  "Double Striker",
+  "Fortress",
+  "Graveyard",
+  "Heavy Control",
+  "Life Control",
+  "Life Gain",
+  "Midrange",
+  "Mill",
+  "OTK",
+  "Ramp",
+  "Scaling",
+  "Stall",
+  "Survivability",
+];
 
 async function main() {
   console.log("Seeding catalogs...");
@@ -58,11 +80,16 @@ async function main() {
   }
 
   console.log("Seeding admin user...");
-  const adminPwd = await bcrypt.hash("admin", 10);
+  const username = process.env.ADMIN_USERNAME?.trim();
+  const rawPwd   = process.env.ADMIN_PASSWORD;
+  if (!username || !rawPwd) {
+    throw new Error("ADMIN_USERNAME and ADMIN_PASSWORD must be set in .env to seed the admin user.");
+  }
+  const adminPwd = await bcrypt.hash(rawPwd, 10);
   await prisma.user.upsert({
-    where: { username: "admin" },
+    where: { username },
     update: { role: Role.ADMIN, password: adminPwd },
-    create: { username: "admin", password: adminPwd, role: Role.ADMIN },
+    create: { username, password: adminPwd, role: Role.ADMIN },
   });
 
   const leadersFile = path.join(process.cwd(), "prisma", "seed-leaders.json");

@@ -12,23 +12,23 @@ export async function GET(req: Request) {
 
   const guides = await prisma.guide.findMany({
     where: {
-      ...(colorId      ? { colorId:      Number(colorId)      } : {}),
+      ...(colorId      ? { colors:     { some: { colorId:     Number(colorId)     } } } : {}),
       ...(difficultyId ? { difficultyId: Number(difficultyId) } : {}),
-      ...(playStyleId  ? { playStyleId:  Number(playStyleId)  } : {}),
+      ...(playStyleId  ? { playStyles: { some: { playStyleId: Number(playStyleId) } } } : {}),
       ...(q
         ? {
             OR: [
-              { title:  { contains: q } },
               { leader: { name: { contains: q } } },
+              { leader: { id:   { contains: q } } },
             ],
           }
         : {}),
     },
     include: {
       leader:     { include: { colors: { include: { color: true } } } },
-      color:      true,
+      colors:     { include: { color: true } },
       difficulty: true,
-      playStyle:  true,
+      playStyles: { include: { playStyle: true } },
     },
     orderBy: { updatedAt: "desc" },
   });
@@ -46,11 +46,15 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
   }
-  const { leaderId, title, body: text, colorId, difficultyId, playStyleId, goodMatchups, badMatchups } = parsed.data;
+  const { leaderId, body: text, colorIds, difficultyId, playStyleIds, goodMatchups, badMatchups } = parsed.data;
 
   const guide = await prisma.$transaction(async (tx) => {
     const created = await tx.guide.create({
-      data: { leaderId, title, body: text, colorId, difficultyId, playStyleId },
+      data: {
+        leaderId, body: text, difficultyId,
+        colors:     { create: colorIds.map((cid)     => ({ colorId:     cid })) },
+        playStyles: { create: playStyleIds.map((pid) => ({ playStyleId: pid })) },
+      },
     });
     const matchupData = [
       ...goodMatchups.map((id) => ({ guideId: created.id, leaderId: id, kind: "GOOD" as const })),

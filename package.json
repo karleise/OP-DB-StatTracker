@@ -14,6 +14,7 @@
     "db:reset": "prisma migrate reset",
     "db:studio": "prisma studio",
     "scrape:leaders": "tsx scripts/scrape-leaders.ts",
+    "import:db-leaders": "tsx scripts/import-db-leaders.ts",
     "postinstall": "prisma generate"
   },
   "prisma": {
@@ -33,7 +34,7 @@
     "react-hook-form": "^7.76.1",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
-    "sonner": "^2.0.7",
+    "sweetalert2": "^11.26.25",
     "tailwind-merge": "^3.6.0",
     "zod": "^4.4.3"
   },
@@ -45,6 +46,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "mysql2": "^3.22.3",
     "playwright": "^1.60.0",
     "tailwindcss": "^4",
     "tsx": "^4.22.3",

@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import type { Game } from "@prisma/client";
 
 export type LeaderRef = { id: string; name: string; imageUrl: string };
 
@@ -43,9 +44,9 @@ function rate(wins: number, total: number) {
   return Math.round((wins / total) * 1000) / 10;
 }
 
-export async function getPersonalStats(userId: string): Promise<PersonalStats> {
+export async function getPersonalStats(userId: string, game: Game): Promise<PersonalStats> {
   const matches = await prisma.match.findMany({
-    where: { playerId: userId },
+    where: { playerId: userId, playerLeader: { game } },
     include: {
       playerLeader: { select: { id: true, name: true, imageUrl: true } },
       rivalLeader:  { select: { id: true, name: true, imageUrl: true } },
@@ -115,10 +116,11 @@ export async function getPersonalStats(userId: string): Promise<PersonalStats> {
   };
 }
 
-export async function getGlobalStats(): Promise<GlobalRow[]> {
+export async function getGlobalStats(game: Game): Promise<GlobalRow[]> {
   const users = await prisma.user.findMany({
     include: {
       matchesAsPlayer: {
+        where: { playerLeader: { game } },
         include: { playerLeader: { select: { id: true, name: true, imageUrl: true } } },
       },
     },

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/auth";
 import { catalogItemSchema } from "@/lib/validators";
@@ -8,6 +9,22 @@ type Ctx = { params: Promise<{ type: string }> };
 
 function isValid(t: string): t is CatalogType {
   return t === "colors" || t === "difficulties" || t === "playstyles";
+}
+
+const LABEL: Record<CatalogType, string> = {
+  colors:       "color",
+  difficulties: "dificultad",
+  playstyles:   "estilo",
+};
+
+async function countUsage(type: CatalogType, id: number): Promise<number> {
+  if (type === "difficulties") return prisma.guide.count({ where: { difficultyId: id } });
+  if (type === "playstyles")   return prisma.guidePlayStyle.count({ where: { playStyleId: id } });
+  const [g, l] = await Promise.all([
+    prisma.guideColor.count({ where: { colorId: id } }),
+    prisma.leaderColor.count({ where: { colorId: id } }),
+  ]);
+  return g + l;
 }
 
 async function listFor(type: CatalogType) {
@@ -63,8 +80,26 @@ export async function DELETE(req: Request, { params }: Ctx) {
   const id = Number(new URL(req.url).searchParams.get("id"));
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
-  if (type === "colors")       await prisma.color.delete({ where: { id } });
-  else if (type === "difficulties") await prisma.difficulty.delete({ where: { id } });
-  else                              await prisma.playStyle.delete({ where: { id } });
-  return NextResponse.json({ ok: true });
+  try {
+    if (type === "colors")            await prisma.color.delete({ where: { id } });
+    else if (type === "difficulties") await prisma.difficulty.delete({ where: { id } });
+    else                              await prisma.playStyle.delete({ where: { id } });
+    return NextResponse.json({ ok: true });
+  } catch (e) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2003") {
+      const inUse = await countUsage(type, id);
+      const noun = LABEL[type];
+      return NextResponse.json(
+        {
+          error: `No se puede eliminar este ${noun}: ${inUse} mazo${inUse === 1 ? "" : "s"} lo usa${inUse === 1 ? "" : "n"}.`,
+          inUse,
+        },
+        { status: 409 },
+      );
+    }
+    if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2025") {
+      return NextResponse.json({ error: "No encontrado" }, { status: 404 });
+    }
+    throw e;
+  }
 }

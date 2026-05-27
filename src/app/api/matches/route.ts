@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   const parsed = matchSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
 
-  const { playerLeaderId, rivalId, rivalName, rivalLeaderId, result, notes } = parsed.data;
+  const { playerLeaderId, rivalId, rivalName, rivalLeaderId, result, turnOrder } = parsed.data;
 
   const match = await prisma.match.create({
     data: {
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       rivalName: rivalName || null,
       rivalLeaderId,
       result,
-      notes: notes || null,
+      turnOrder: turnOrder || null,
     },
   });
   return NextResponse.json(match, { status: 201 });
