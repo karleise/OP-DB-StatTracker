@@ -2,9 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function VideoBackground() {
+export default function VideoBackground({ src = "/wallpaper.mp4" }: { src?: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [hasVideo, setHasVideo] = useState(true);
+
+  useEffect(() => { setHasVideo(true); }, [src]);
 
   useEffect(() => {
     const v = ref.current;
@@ -29,9 +31,10 @@ export default function VideoBackground() {
       <div className="video-bg-fallback" aria-hidden />
       {hasVideo && (
         <video
+          key={src}
           ref={ref}
           className="video-bg"
-          src="/wallpaper.mp4"
+          src={src}
           autoPlay
           loop
           muted

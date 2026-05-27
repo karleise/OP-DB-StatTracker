@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import type { Game } from "@prisma/client";
 import { shuffle } from "@/lib/utils";
 
 type PoolLeader = {
@@ -15,9 +16,12 @@ export type RandomPair = {
   respectedMatchups: boolean;
 };
 
-async function loadPool(useAllAvailable: boolean): Promise<PoolLeader[]> {
+async function loadPool(useAllAvailable: boolean, game: Game): Promise<PoolLeader[]> {
   const leaders = await prisma.leader.findMany({
-    where: useAllAvailable ? {} : { guide: { isNot: null } },
+    where: {
+      game,
+      ...(useAllAvailable ? {} : { guide: { isNot: null } }),
+    },
     include: {
       guide: {
         include: {
@@ -43,8 +47,9 @@ function isBadPair(a: PoolLeader, b: PoolLeader): boolean {
 export async function pickPair(opts: {
   considerMatchups: boolean;
   useAllAvailable: boolean;
+  game: Game;
 }): Promise<RandomPair | null> {
-  const pool = await loadPool(opts.useAllAvailable);
+  const pool = await loadPool(opts.useAllAvailable, opts.game);
   if (pool.length < 2) return null;
 
   const MAX_ATTEMPTS = 50;

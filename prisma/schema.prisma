@@ -22,6 +22,16 @@ enum Result {
   LOSS
 }
 
+enum TurnOrder {
+  FIRST
+  SECOND
+}
+
+enum Game {
+  OP
+  DB
+}
+
 model User {
   id              String   @id @default(cuid())
   username        String   @unique
@@ -41,12 +51,15 @@ model Leader {
   attribute String?
   tribe     String?
   imageUrl  String  @db.Text
+  game      Game    @default(OP)
 
   colors          LeaderColor[]
   guide           Guide?
   matchupAppearances GuideMatchup[]
   playerMatches   Match[] @relation("PlayerLeader")
   rivalMatches    Match[] @relation("RivalLeader")
+
+  @@index([game])
 }
 
 model Color {
@@ -55,7 +68,7 @@ model Color {
   hex     String?
 
   leaders LeaderColor[]
-  guides  Guide[]
+  guides  GuideColor[]
 }
 
 model LeaderColor {
@@ -77,31 +90,48 @@ model Difficulty {
 }
 
 model PlayStyle {
-  id     Int     @id @default(autoincrement())
-  name   String  @unique
-  guides Guide[]
+  id     Int                @id @default(autoincrement())
+  name   String             @unique
+  guides GuidePlayStyle[]
 }
 
 model Guide {
   id           String   @id @default(cuid())
   leaderId     String   @unique
-  title        String
   body         String   @db.Text
-  colorId      Int
   difficultyId Int
-  playStyleId  Int
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  leader     Leader        @relation(fields: [leaderId],     references: [id])
-  color      Color         @relation(fields: [colorId],      references: [id])
-  difficulty Difficulty    @relation(fields: [difficultyId], references: [id])
-  playStyle  PlayStyle     @relation(fields: [playStyleId],  references: [id])
+  leader     Leader            @relation(fields: [leaderId],     references: [id])
+  difficulty Difficulty        @relation(fields: [difficultyId], references: [id])
+  colors     GuideColor[]
+  playStyles GuidePlayStyle[]
   matchups   GuideMatchup[]
 
-  @@index([colorId])
   @@index([difficultyId])
+}
+
+model GuidePlayStyle {
+  guideId     String
+  playStyleId Int
+
+  guide     Guide     @relation(fields: [guideId],     references: [id], onDelete: Cascade)
+  playStyle PlayStyle @relation(fields: [playStyleId], references: [id], onDelete: Cascade)
+
+  @@id([guideId, playStyleId])
   @@index([playStyleId])
+}
+
+model GuideColor {
+  guideId String
+  colorId Int
+
+  guide Guide @relation(fields: [guideId], references: [id], onDelete: Cascade)
+  color Color @relation(fields: [colorId], references: [id], onDelete: Cascade)
+
+  @@id([guideId, colorId])
+  @@index([colorId])
 }
 
 model GuideMatchup {
@@ -125,6 +155,7 @@ model Match {
   rivalName      String?
   rivalLeaderId  String
   result         Result
+  turnOrder      TurnOrder?
   notes          String?  @db.Text
   playedAt       DateTime @default(now())
 

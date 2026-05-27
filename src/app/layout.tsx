@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Oswald, JetBrains_Mono } from "next/font/google";
-import { Toaster } from "sonner";
 import Header from "@/components/layout/Header";
 import Providers from "@/components/Providers";
 import PageFade from "@/components/PageFade";
 import VideoBackground from "@/components/VideoBackground";
+import { getCurrentGame } from "@/lib/game";
+import "sweetalert2/dist/sweetalert2.css";
 import "./globals.css";
 
 const display = Oswald({
@@ -19,24 +20,28 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OP-DB-StatTracker",
-  description: "Guías, emparejador y estadísticas para One Piece Card Game",
+  title: "StatTracker",
+  description: "Mazos, emparejador y estadísticas para One Piece Card Game",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const game = await getCurrentGame();
   return (
-    <html lang="es" className={`${display.variable} ${mono.variable} h-full antialiased`}>
+    <html
+      lang="es"
+      data-game={game}
+      className={`${display.variable} ${mono.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col">
-        <VideoBackground />
+        <VideoBackground src={game === "DB" ? "/dragonball-wallpaper.mp4" : "/wallpaper.mp4"} />
         <Providers>
           <Header />
           <main className="flex-1">
             <PageFade>{children}</PageFade>
           </main>
           <footer className="border-t border-border py-6 text-center text-sm text-muted bg-surface/60 backdrop-blur-sm">
-            OP-DB-StatTracker · uso personal · fan project
+            StatTracker · uso personal · fan project
           </footer>
-          <Toaster position="top-right" richColors closeButton />
         </Providers>
       </body>
     </html>

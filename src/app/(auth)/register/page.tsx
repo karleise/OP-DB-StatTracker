@@ -4,7 +4,7 @@ import { useState, FormEvent } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { toast } from "sonner";
+import { notifySuccess, notifyError } from "@/lib/notify";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -24,13 +24,13 @@ export default function RegisterPage() {
     if (!res.ok) {
       setLoading(false);
       const data = await res.json().catch(() => ({}));
-      toast.error(data?.error ?? "No se pudo crear la cuenta");
+      notifyError(data?.error ?? "No se pudo crear la cuenta");
       return;
     }
     const login = await signIn("credentials", { username, password, redirect: false });
     setLoading(false);
-    if (login?.error) toast.error("Cuenta creada pero no se pudo iniciar sesión");
-    else { toast.success("Cuenta creada"); router.push("/"); router.refresh(); }
+    if (login?.error) notifyError("Cuenta creada pero no se pudo iniciar sesión");
+    else { notifySuccess("Cuenta creada"); router.push("/"); router.refresh(); }
   }
 
   return (

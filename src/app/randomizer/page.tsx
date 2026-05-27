@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { toast } from "sonner";
+import { notifyError, notifyInfo } from "@/lib/notify";
 import { leaderImageSrc } from "@/lib/leader-image";
 
 type Pair = {
@@ -27,22 +27,22 @@ export default function RandomizerPage() {
     setLoading(false);
     if (!res.ok) {
       const err = await res.json().catch(() => null);
-      toast.error(err?.error ?? "No hay leaders suficientes");
+      notifyError(err?.error ?? "No hay leaders suficientes");
       return;
     }
     const data = (await res.json()) as Pair;
     setPair(data);
     if (considerMatchups && !data.respectedMatchups) {
-      toast.message("No se encontró un par sin matchup desventajoso, se devolvió uno aleatorio.");
+      notifyInfo("No se encontró un par sin matchup desventajoso, se devolvió uno aleatorio.");
     }
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="heading-display text-4xl mb-2">Emparejador aleatorio</h1>
-      <p className="text-muted mb-6">Genera un duelo entre dos líderes que tengan guía.</p>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 md:py-10">
+      <h1 className="heading-display text-3xl sm:text-4xl mb-2">Emparejador aleatorio</h1>
+      <p className="text-muted mb-6">Genera un duelo entre dos líderes que tengan mazo.</p>
 
-      <div className="rounded-xl border bg-surface p-4 mb-8 flex flex-wrap gap-6 items-center">
+      <div className="rounded-xl border bg-surface p-4 mb-8 flex flex-wrap gap-4 sm:gap-6 items-stretch sm:items-center">
         <Toggle
           checked={considerMatchups}
           onChange={setConsiderMatchups}
@@ -53,17 +53,17 @@ export default function RandomizerPage() {
           checked={useAllAvailable}
           onChange={setUseAllAvailable}
           label="Usar todos los leaders disponibles"
-          hint="Por defecto solo se usan los que tienen guía"
+          hint="Por defecto solo se usan los que tienen mazo"
         />
-        <button className="btn btn-primary ml-auto" disabled={loading} onClick={generate}>
+        <button className="btn btn-primary w-full sm:w-auto sm:ml-auto" disabled={loading} onClick={generate}>
           {loading ? "Generando..." : "Generar matchup"}
         </button>
       </div>
 
       {pair && (
-        <div className="grid sm:grid-cols-[1fr_auto_1fr] items-center gap-6 animate-in fade-in">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center gap-4 sm:gap-6 animate-in fade-in">
           <LeaderSide leader={pair.leaderA} accent="#3b6fd6" />
-          <div className="heading-display text-7xl text-accent">VS</div>
+          <div className="heading-display text-5xl sm:text-7xl text-accent text-center">VS</div>
           <LeaderSide leader={pair.leaderB} accent="#d83a3a" reverse />
         </div>
       )}
@@ -71,7 +71,7 @@ export default function RandomizerPage() {
       {!pair && (
         <div className="rounded-xl border bg-surface p-12 text-center text-muted">
           <div className="heading-display text-2xl mb-2">Pulsa &quot;Generar matchup&quot;</div>
-          <p>El emparejador elige dos líderes al azar entre los que tienen guía.</p>
+          <p>El emparejador elige dos líderes al azar entre los que tienen mazo.</p>
         </div>
       )}
     </div>
@@ -100,10 +100,19 @@ function LeaderSide({
 }: { leader: { id: string; name: string; imageUrl: string }; accent: string; reverse?: boolean }) {
   return (
     <div className={`flex flex-col items-center ${reverse ? "sm:items-end" : "sm:items-start"}`}>
-      <div className="rounded-xl overflow-hidden border" style={{ borderColor: accent, boxShadow: `0 10px 50px ${accent}50` }}>
-        <Image src={leaderImageSrc(leader)} alt={leader.name} width={280} height={392} unoptimized />
+      <div
+        className="rounded-xl overflow-hidden border w-full max-w-[240px] sm:max-w-[280px]"
+        style={{ borderColor: accent, boxShadow: `0 10px 50px ${accent}50` }}
+      >
+        <Image
+          src={leaderImageSrc(leader)}
+          alt={leader.name}
+          width={560}
+          height={784}
+          className="w-full h-auto"
+        />
       </div>
-      <div className="mt-3 heading-display text-2xl text-center">{leader.name}</div>
+      <div className="mt-3 heading-display text-xl sm:text-2xl text-center">{leader.name}</div>
       <div className="text-xs font-mono text-muted">{leader.id}</div>
     </div>
   );

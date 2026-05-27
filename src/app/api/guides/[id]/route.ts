@@ -11,9 +11,9 @@ export async function GET(_req: Request, { params }: Ctx) {
     where: { id },
     include: {
       leader: { include: { colors: { include: { color: true } } } },
-      color: true,
+      colors: { include: { color: true } },
       difficulty: true,
-      playStyle: true,
+      playStyles: { include: { playStyle: true } },
       matchups: {
         include: { leader: { include: { colors: { include: { color: true } } } } },
       },
@@ -29,13 +29,19 @@ export async function PATCH(req: Request, { params }: Ctx) {
   const body = await req.json().catch(() => null);
   const parsed = guideSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
-  const { leaderId, title, body: text, colorId, difficultyId, playStyleId, goodMatchups, badMatchups } = parsed.data;
+  const { leaderId, body: text, colorIds, difficultyId, playStyleIds, goodMatchups, badMatchups } = parsed.data;
 
   const updated = await prisma.$transaction(async (tx) => {
     const u = await tx.guide.update({
       where: { id },
-      data: { leaderId, title, body: text, colorId, difficultyId, playStyleId },
+      data: { leaderId, body: text, difficultyId },
     });
+    await tx.guideColor.deleteMany({ where: { guideId: id } });
+    await tx.guideColor.createMany({ data: colorIds.map((cid) => ({ guideId: id, colorId: cid })) });
+
+    await tx.guidePlayStyle.deleteMany({ where: { guideId: id } });
+    await tx.guidePlayStyle.createMany({ data: playStyleIds.map((pid) => ({ guideId: id, playStyleId: pid })) });
+
     await tx.guideMatchup.deleteMany({ where: { guideId: id } });
     const matchupData = [
       ...goodMatchups.map((lid) => ({ guideId: id, leaderId: lid, kind: "GOOD" as const })),

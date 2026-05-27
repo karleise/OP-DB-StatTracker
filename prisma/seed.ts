@@ -31,7 +31,29 @@ const DIFFICULTY_DEFAULTS = [
   { name: "Hard",   order: 3 },
 ];
 
-const PLAYSTYLE_DEFAULTS = ["Aggro", "Midrange", "Control", "Combo", "Rush", "Tempo"];
+const PLAYSTYLE_DEFAULTS = [
+  "Aggro",
+  "Beatdown",
+  "Board Control",
+  "Board Flood",
+  "Board Spam",
+  "Card Cycling",
+  "Control",
+  "Critical Hit",
+  "Double Striker",
+  "Fortress",
+  "Graveyard",
+  "Heavy Control",
+  "Life Control",
+  "Life Gain",
+  "Midrange",
+  "Mill",
+  "OTK",
+  "Ramp",
+  "Scaling",
+  "Stall",
+  "Survivability",
+];
 
 async function main() {
   console.log("Seeding catalogs...");

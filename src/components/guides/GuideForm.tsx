@@ -2,33 +2,39 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { notifySuccess, notifyError, confirmDanger } from "@/lib/notify";
+import { Check } from "lucide-react";
 import LeaderPicker from "@/components/leaders/LeaderPicker";
+import LeaderCombobox from "@/components/leaders/LeaderCombobox";
+import ColorSwatchPicker from "@/components/colors/ColorSwatchPicker";
 
 type Leader = { id: string; name: string; imageUrl: string };
 type Item = { id: number; name: string };
+type ColorItem = { id: number; name: string; hex: string | null };
+
+const MAX_PLAYSTYLES = 4;
 
 export type GuideInitial = {
   id?: string;
   leaderId: string;
-  title: string;
   body: string;
-  colorId: number;
+  colorIds: number[];
   difficultyId: number;
-  playStyleId: number;
+  playStyleIds: number[];
   goodMatchups: string[];
   badMatchups: string[];
 };
 
 export default function GuideForm({
-  initial, leaders, colors, difficulties, playStyles, leadersWithoutGuide,
+  initial, leaders, colors, difficulties, playStyles, leadersWithoutGuide, maxColors = 2,
 }: {
   initial?: Partial<GuideInitial>;
   leaders: Leader[];
   leadersWithoutGuide: Leader[];
-  colors: Item[];
+  colors: ColorItem[];
   difficulties: Item[];
   playStyles: Item[];
+  maxColors?: number;
 }) {
   const router = useRouter();
   const editing = !!initial?.id;
@@ -36,20 +42,21 @@ export default function GuideForm({
 
   const [state, setState] = useState<GuideInitial>({
     leaderId:     initial?.leaderId     ?? "",
-    title:        initial?.title        ?? "",
     body:         initial?.body         ?? "",
-    colorId:      Number(initial?.colorId      ?? colors[0]?.id      ?? 0),
-    difficultyId: Number(initial?.difficultyId ?? difficulties[0]?.id ?? 0),
-    playStyleId:  Number(initial?.playStyleId  ?? playStyles[0]?.id   ?? 0),
+    colorIds:     initial?.colorIds     ?? [],
+    difficultyId: Number(initial?.difficultyId ?? 0),
+    playStyleIds: initial?.playStyleIds  ?? [],
     goodMatchups: initial?.goodMatchups ?? [],
     badMatchups:  initial?.badMatchups  ?? [],
   });
   const [saving, setSaving] = useState(false);
 
   async function submit() {
-    if (!state.leaderId)         return toast.error("Selecciona un líder");
-    if (!state.title.trim())     return toast.error("Falta el título");
-    if (!state.body.trim())      return toast.error("Falta el cuerpo");
+    if (!state.leaderId)                  return notifyError("Selecciona un líder");
+    if (!state.body.trim())               return notifyError("Falta el cuerpo");
+    if (state.colorIds.length === 0)      return notifyError("Selecciona al menos 1 color");
+    if (!state.difficultyId)              return notifyError("Selecciona dificultad");
+    if (state.playStyleIds.length === 0)  return notifyError("Selecciona al menos 1 estilo");
     setSaving(true);
     const url = editing ? `/api/guides/${initial!.id}` : "/api/guides";
     const method = editing ? "PATCH" : "POST";
@@ -61,56 +68,100 @@ export default function GuideForm({
     setSaving(false);
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      toast.error("Error guardando: " + JSON.stringify(err));
+      notifyError("Error guardando: " + (err?.error ? JSON.stringify(err.error) : "desconocido"));
       return;
     }
-    toast.success("Guardado");
+    notifySuccess(editing ? "Mazo actualizado" : "Mazo creado");
     router.push("/admin/guides");
     router.refresh();
   }
 
   async function onDelete() {
     if (!editing) return;
-    if (!confirm("¿Eliminar guía?")) return;
+    const ok = await confirmDanger({
+      title: "¿Eliminar mazo?",
+      text: "Se borrará junto con sus matchups y colores asociados.",
+    });
+    if (!ok) return;
     const res = await fetch(`/api/guides/${initial!.id}`, { method: "DELETE" });
-    if (!res.ok) return toast.error("Error eliminando");
-    toast.success("Eliminada");
+    if (!res.ok) return notifyError("Error eliminando");
+    notifySuccess("Mazo eliminado");
     router.push("/admin/guides");
     router.refresh();
   }
 
+  function togglePlayStyle(id: number) {
+    setState((s) => {
+      if (s.playStyleIds.includes(id)) {
+        return { ...s, playStyleIds: s.playStyleIds.filter((v) => v !== id) };
+      }
+      if (s.playStyleIds.length >= MAX_PLAYSTYLES) return s;
+      return { ...s, playStyleIds: [...s.playStyleIds, id] };
+    });
+  }
+
   return (
     <div className="space-y-6">
-      <div className="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label className="label">Leader</label>
-          <select
-            className="select"
-            value={state.leaderId}
-            onChange={(e) => setState({ ...state, leaderId: e.target.value })}
-            disabled={editing}
-          >
-            <option value="">— Seleccionar —</option>
-            {leaderOptions.map((l) => (
-              <option key={l.id} value={l.id}>{l.id} — {l.name}</option>
-            ))}
-          </select>
-          {editing && <div className="text-xs text-muted mt-1">El leader no se puede cambiar tras crear la guía.</div>}
+      <div>
+        <label className="label">Leader</label>
+        <LeaderCombobox
+          leaders={leaderOptions}
+          value={state.leaderId}
+          onChange={(id) => setState({ ...state, leaderId: id })}
+          disabled={editing}
+        />
+        {editing && <div className="text-xs text-muted mt-1">El leader no se puede cambiar tras crear el mazo.</div>}
+      </div>
+
+      <ColorSwatchPicker
+        label="Color del mazo"
+        max={maxColors}
+        colors={colors}
+        value={state.colorIds}
+        onChange={(v) => setState({ ...state, colorIds: v })}
+      />
+
+      <div>
+        <div className="label flex items-center gap-2">
+          <span>Estilo</span>
+          <span className="text-muted normal-case font-normal tracking-normal text-[11px]">
+            ({state.playStyleIds.length}/{MAX_PLAYSTYLES})
+          </span>
         </div>
-        <div>
-          <label className="label">Título</label>
-          <input
-            className="input"
-            value={state.title}
-            onChange={(e) => setState({ ...state, title: e.target.value })}
-          />
+        <div className="flex flex-wrap gap-2">
+          {playStyles.map((ps) => {
+            const sel = state.playStyleIds.includes(ps.id);
+            const disabled = !sel && state.playStyleIds.length >= MAX_PLAYSTYLES;
+            return (
+              <button
+                key={ps.id}
+                type="button"
+                onClick={() => togglePlayStyle(ps.id)}
+                disabled={disabled}
+                aria-pressed={sel}
+                className={
+                  "flex items-center gap-1.5 px-3 py-1.5 rounded-full border-2 text-sm font-semibold transition " +
+                  (sel
+                    ? "bg-accent/15 text-accent border-accent shadow-sm"
+                    : "bg-surface text-foreground border-border hover:border-accent/60 hover:text-accent") +
+                  (disabled ? " opacity-40 cursor-not-allowed hover:border-border hover:text-foreground" : "")
+                }
+              >
+                {sel && <Check className="w-3.5 h-3.5" strokeWidth={3} />}
+                {ps.name}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-3 gap-4">
-        <SelectField label="Color"      items={colors}       value={state.colorId}      onChange={(v) => setState({ ...state, colorId: v })} />
-        <SelectField label="Dificultad" items={difficulties} value={state.difficultyId} onChange={(v) => setState({ ...state, difficultyId: v })} />
-        <SelectField label="Estilo"     items={playStyles}   value={state.playStyleId}  onChange={(v) => setState({ ...state, playStyleId: v })} />
+      <div>
+        <SelectField
+          label="Dificultad"
+          items={difficulties}
+          value={state.difficultyId}
+          onChange={(v) => setState({ ...state, difficultyId: v })}
+        />
       </div>
 
       <div>
@@ -141,7 +192,7 @@ export default function GuideForm({
 
       <div className="flex gap-2">
         <button className="btn btn-primary" disabled={saving} onClick={submit}>
-          {saving ? "Guardando..." : (editing ? "Guardar cambios" : "Crear guía")}
+          {saving ? "Guardando..." : (editing ? "Guardar cambios" : "Crear mazo")}
         </button>
         {editing && (
           <button className="btn btn-ghost text-accent" onClick={onDelete}>Eliminar</button>
@@ -157,7 +208,12 @@ function SelectField({
   return (
     <div>
       <label className="label">{label}</label>
-      <select className="select" value={value} onChange={(e) => onChange(Number(e.target.value))}>
+      <select
+        className="select"
+        value={value || ""}
+        onChange={(e) => onChange(Number(e.target.value))}
+      >
+        <option value="">— Seleccionar —</option>
         {items.map((it) => <option key={it.id} value={it.id}>{it.name}</option>)}
       </select>
     </div>

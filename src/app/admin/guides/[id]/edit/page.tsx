@@ -7,33 +7,38 @@ type Ctx = { params: Promise<{ id: string }> };
 export default async function EditGuidePage({ params }: Ctx) {
   const { id } = await params;
 
-  const [guide, leaders, colors, difficulties, playStyles] = await Promise.all([
-    prisma.guide.findUnique({
-      where: { id },
-      include: { matchups: true },
+  const guide = await prisma.guide.findUnique({
+    where: { id },
+    include: { matchups: true, colors: true, playStyles: true, leader: { select: { game: true } } },
+  });
+  if (!guide) notFound();
+
+  const game = guide.leader.game;
+
+  const [leaders, colors, difficulties, playStyles] = await Promise.all([
+    prisma.leader.findMany({ where: { game }, orderBy: { id: "asc" }, select: { id: true, name: true, imageUrl: true } }),
+    prisma.color.findMany({
+      where: game === "DB" ? { name: { not: "Purple" } } : undefined,
+      orderBy: { name: "asc" },
     }),
-    prisma.leader.findMany({ orderBy: { id: "asc" }, select: { id: true, name: true, imageUrl: true } }),
-    prisma.color.findMany({ orderBy: { name: "asc" } }),
     prisma.difficulty.findMany({ orderBy: { order: "asc" } }),
     prisma.playStyle.findMany({ orderBy: { name: "asc" } }),
   ]);
-  if (!guide) notFound();
 
   const initial = {
     id: guide.id,
     leaderId:     guide.leaderId,
-    title:        guide.title,
     body:         guide.body,
-    colorId:      guide.colorId,
+    colorIds:     guide.colors.map((c) => c.colorId),
     difficultyId: guide.difficultyId,
-    playStyleId:  guide.playStyleId,
+    playStyleIds: guide.playStyles.map((p) => p.playStyleId),
     goodMatchups: guide.matchups.filter((m) => m.kind === "GOOD").map((m) => m.leaderId),
     badMatchups:  guide.matchups.filter((m) => m.kind === "BAD").map((m) => m.leaderId),
   };
 
   return (
     <div>
-      <h1 className="heading-display text-3xl mb-4">Editar guía</h1>
+      <h1 className="heading-display text-2xl sm:text-3xl mb-4">Editar mazo</h1>
       <GuideForm
         initial={initial}
         leaders={leaders}
@@ -41,6 +46,7 @@ export default async function EditGuidePage({ params }: Ctx) {
         colors={colors}
         difficulties={difficulties}
         playStyles={playStyles}
+        maxColors={game === "DB" ? 1 : 2}
       />
     </div>
   );

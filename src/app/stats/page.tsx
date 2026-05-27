@@ -3,18 +3,21 @@ import Image from "next/image";
 import { auth } from "@/lib/auth";
 import { getGlobalStats, getPersonalStats } from "@/lib/stats";
 import { leaderImageSrc } from "@/lib/leader-image";
+import { getCurrentGame } from "@/lib/game";
+import type { Game } from "@prisma/client";
 
 type SearchParams = Promise<{ tab?: string }>;
 
 export default async function StatsPage({ searchParams }: { searchParams: SearchParams }) {
   const sp = await searchParams;
   const session = await auth();
+  const game = await getCurrentGame();
   const tab = sp.tab === "mine" || sp.tab === "global" ? sp.tab : (session?.user ? "mine" : "global");
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="heading-display text-4xl">Estadísticas</h1>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 md:py-10">
+      <div className="flex items-center justify-between gap-3 mb-6 flex-wrap">
+        <h1 className="heading-display text-3xl sm:text-4xl">Estadísticas</h1>
         {session?.user && (
           <Link href="/stats/new" className="btn btn-primary">+ Registrar partida</Link>
         )}
@@ -25,9 +28,9 @@ export default async function StatsPage({ searchParams }: { searchParams: Search
         <TabLink href="/stats?tab=global" active={tab === "global"}>Global</TabLink>
       </div>
 
-      {tab === "mine"   && session?.user && <MineTab userId={session.user.id} />}
+      {tab === "mine"   && session?.user && <MineTab userId={session.user.id} game={game} />}
       {tab === "mine"   && !session?.user && <div className="text-muted">Inicia sesión para ver tus stats.</div>}
-      {tab === "global" && <GlobalTab />}
+      {tab === "global" && <GlobalTab game={game} />}
     </div>
   );
 }
@@ -41,11 +44,11 @@ function TabLink({ href, active, disabled, children }: { href: string; active: b
   );
 }
 
-async function MineTab({ userId }: { userId: string }) {
-  const s = await getPersonalStats(userId);
+async function MineTab({ userId, game }: { userId: string; game: Game }) {
+  const s = await getPersonalStats(userId, game);
   return (
     <div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 sm:grid-cols-2">
         <Big label="Partidas" v={s.totalMatches} />
         <Big label="Victorias" v={s.wins} accent="#3aa760" />
         <Big label="Derrotas" v={s.losses} accent="#d83a3a" />
@@ -74,8 +77,8 @@ async function MineTab({ userId }: { userId: string }) {
 
       <Section title="Últimas partidas">
         {s.recentMatches.length === 0 && <div className="text-muted text-sm">Sin partidas aún.</div>}
-        <div className="rounded-xl border bg-surface overflow-hidden">
-          <table className="w-full text-sm">
+        <div className="rounded-xl border bg-surface overflow-x-auto">
+          <table className="w-full min-w-[640px] text-sm">
             <thead className="bg-surface-2 text-left uppercase tracking-wide text-xs text-muted">
               <tr>
                 <th className="px-3 py-2">Fecha</th>
@@ -105,12 +108,12 @@ async function MineTab({ userId }: { userId: string }) {
   );
 }
 
-async function GlobalTab() {
-  const rows = await getGlobalStats();
+async function GlobalTab({ game }: { game: Game }) {
+  const rows = await getGlobalStats(game);
   return (
     <div>
-      <div className="rounded-xl border bg-surface overflow-hidden">
-        <table className="w-full text-sm">
+      <div className="rounded-xl border bg-surface overflow-x-auto">
+        <table className="w-full min-w-[640px] text-sm">
           <thead className="bg-surface-2 text-left uppercase tracking-wide text-xs text-muted">
             <tr>
               <th className="px-3 py-2">Jugador</th>
@@ -161,8 +164,8 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function DeckTable({ rows }: { rows: { leader: { id: string; name: string; imageUrl: string }; wins: number; losses: number; total: number; winrate: number }[] }) {
   if (!rows.length) return <div className="text-muted text-sm">Sin partidas.</div>;
   return (
-    <div className="rounded-xl border bg-surface overflow-hidden">
-      <table className="w-full text-sm">
+    <div className="rounded-xl border bg-surface overflow-x-auto">
+      <table className="w-full min-w-[440px] text-sm">
         <thead className="bg-surface-2 text-left uppercase tracking-wide text-xs text-muted">
           <tr>
             <th className="px-3 py-2">Leader</th>
